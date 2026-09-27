@@ -28,8 +28,10 @@ SECRET_KEY = 'django-insecure-pqx0q&xr4i@+05439l)g-_y*(8*=vr6zxwzz3@-4$jo*(6r-!n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['onlyflans.cl', '127.0.0.1']
 
+LOGIN_REDIRECT_URL = '/bienvenido/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Application definition
 

@@ -15,10 +15,24 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'about' %}">Acerca de</a>
         </li>
-        </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
         </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item d-flex align-items-center me-3">
+            <span class="navbar-text text-light fw-bold">Hola, {{ user.username }}</span>
+          </li>
+          <li class="nav-item">
+            <form method="POST" action="{% url 'logout' %}" class="d-inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-3">Cerrar Sesión</button>
+            </form>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-light btn-sm rounded-pill px-3" href="{% url 'login' %}">Iniciar Sesión</a>
+          </li>
+        {% endif %}
       </ul>
     </div>
   </div>

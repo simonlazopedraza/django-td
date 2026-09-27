@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
@@ -14,10 +15,11 @@ def about(request) -> HttpResponse:
     context = {}
     return render(request, 'about.html')
 
+@login_required
 def welcome(request) -> HttpResponse:
     flanes_privados = Flan.objects.filter(is_private=True)
     context = {
-        'nombre_usuario':'Simón',
+        'nombre_usuario': request.user.username,
         'flanes_privados' : flanes_privados
     }
     return render(request, 'welcome.html', context)
