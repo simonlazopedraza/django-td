@@ -18,3 +18,7 @@ __pycache__/
 # Archivos de SO
 .DS_Store
 Thumbs.db
+# Archivos comprimidos de entrega
+*.rar
+*.zip
+*.tar.gz
