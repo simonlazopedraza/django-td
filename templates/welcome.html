@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container text-center mt-5 pb-2">
+
+    <h1 class="text-danger">Bienvenida/o 
+        {% if nombre_usuario %}
+            {{nombre_usuario}} 
+        {% else %}
+                Invitada/o.
+        {% endif %}
+    </h1>
+</div>
+<div class="container mb-5">
+    <h2 class="text-muted display-6 text-center border-top pt-2 pb-4">Postres disponibles</h2>    
+    <div class="row g-4 justify-content-center">
+        {% for flan in flanes_privados %}
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden transition-hover">
+                <img src="{{ flan.image_url }}" class="card-img-top" alt="{{ flan.name }}" style="height: 250px; object-fit: cover;">
+                <div class="card-body d-flex flex-column p-4">
+                    <h3 class="card-title fw-bold">{{ flan.name }}</h3>
+                    <p class="card-text text-muted">{{ flan.description }}</p>
+                    <div class="mt-auto d-flex justify-content-between align-items-center pt-3 border-top">
+                        <span class="fs-5 fw-bold text-black">$ - </span>
+                        <button type="button" disabled class="btn btn-dark px-4 rounded-pill">Ver más</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>    
+{% endblock %}

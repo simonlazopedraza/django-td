@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center mt-5" style="min-height: 40vh;">
+    <div class="text-center p-5 bg-light rounded-4 shadow-sm border">
+        <h2 class="text-success fw-bold mb-3">¡Éxito!</h2>
+        <p class="lead text-muted mb-0">Tu formulario ha sido enviado de manera exitosa.</p>
+        <a href="{% url 'index' %}" class="btn btn-outline-dark mt-4 rounded-pill px-4">Volver al Inicio</a>
+    </div>
+</div>
+{% endblock %}
