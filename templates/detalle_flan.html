@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+<div class="container my-5">
+  <a href="javascript:history.back()" class="btn btn-outline-secondary btn-sm rounded-pill mb-4">
+    &larr; Volver al catálogo
+  </a>
+
+  <div class="row g-5">
+    <!-- Columna Izquierda: Imagen del Flan e Información Nutricional -->
+    <div class="col-md-6">
+      <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+        <img src="{{ flan.image_url }}" alt="{{ flan.name }}" class="img-fluid" style="height: 380px; width: 100%; object-fit: cover;">
+      </div>
+
+      <!-- Tarjeta de Información Nutricional (Mockup profesional) -->
+      <div class="card border-0 bg-light rounded-4 p-4 shadow-sm">
+        <h5 class="fw-bold text-dark border-bottom pb-2">Información Nutricional (Porción 100g)</h5>
+        <div class="row text-center mt-3">
+          <div class="col-3">
+            <span class="d-block fw-bold text-danger">210</span>
+            <small class="text-muted">Calorías</small>
+          </div>
+          <div class="col-3">
+            <span class="d-block fw-bold text-dark">6.5g</span>
+            <small class="text-muted">Grasas</small>
+          </div>
+          <div class="col-3">
+            <span class="d-block fw-bold text-dark">32g</span>
+            <small class="text-muted">Carbohidratos</small>
+          </div>
+          <div class="col-3">
+            <span class="d-block fw-bold text-dark">5.8g</span>
+            <small class="text-muted">Proteínas</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 d-flex flex-column justify-content-between">
+      <div>
+        <div class="d-flex align-items-center gap-2 mb-2">
+          {% if flan.is_private %}
+            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-semibold">Exclusivo Socios</span>
+          {% else %}
+            <span class="badge bg-success px-3 py-2 rounded-pill fw-semibold">Disponible al Público</span>
+          {% endif %}
+        </div>
+
+        <h1 class="display-5 fw-bold text-danger">{{ flan.name }}</h1>
+        <p class="fs-2 fw-bold text-dark my-3">${{ flan.price|intcomma }} CLP</p>
+
+        <h5 class="fw-semibold text-secondary mt-4">Descripción:</h5>
+        <p class="text-muted fs-5 leading-relaxed">{{ flan.description }}</p>
+
+        <!-- Lista de Ingredientes Artesanales -->
+        <h5 class="fw-semibold text-secondary mt-4">Ingredientes Seleccionados:</h5>
+        <ul class="list-group list-group-flush rounded-3 border-0">
+          <li class="list-group-item bg-transparent px-0 text-muted">Leche entera de campo pasteurizada</li>
+          <li class="list-group-item bg-transparent px-0 text-muted">Huevos de gallina libre</li>
+          <li class="list-group-item bg-transparent px-0 text-muted">Caramelo artesanal al punto de hebra</li>
+          <li class="list-group-item bg-transparent px-0 text-muted">Esencia natural de vainilla bourbon</li>
+        </ul>
+      </div>
+
+      <div class="d-grid gap-2 mt-5">
+        <a href="{% url 'contact' %}" class="btn btn-danger btn-lg rounded-pill fw-semibold py-3 shadow-sm">
+          Cotizar o Pedir por Encargo
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
