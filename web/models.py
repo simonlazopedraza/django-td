@@ -10,6 +10,9 @@ class Flan(models.Model):
     slug = models.SlugField()
     is_private = models.BooleanField(default=False)
     price = models.PositiveIntegerField(default=0)
+    @property
+    def precio_formateado(self):
+        return f"{self.price:,}".replace(",", ".")
     def __str__(self):
         return self.name
 

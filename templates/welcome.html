@@ -1,5 +1,4 @@
 {% extends 'base.html'%}
-{% load humanize %}
 
 {% block content %}
 <div class="container text-center mt-5 pb-2">
@@ -23,8 +22,8 @@
                     <h3 class="card-title fw-bold">{{ flan.name }}</h3>
                     <p class="card-text text-muted">{{ flan.description }}</p>
                     <div class="mt-auto d-flex justify-content-between align-items-center pt-3 border-top">
-                        <span class="fs-5 fw-bold text-black">${{ producto.price|intcomma }} </span>
-                        <a href="{% url 'detalle_flan' producto.slug %}" class="btn btn-dark px-4 rounded-pill">Ver más</a>
+                        <span class="fs-5 fw-bold text-black">${{ flan.precio_formateado }} </span>
+                        <a href="{% url 'detalle_flan' flan.slug %}" class="btn btn-dark px-4 rounded-pill">Ver más</a>
                     </div>
                 </div>
             </div>

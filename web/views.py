@@ -50,6 +50,6 @@ def registro(request) -> HttpResponse:
         form = UserCreationForm()
     return render(request, 'registration/registration.html', {'form': form})
 
-def detalle_flan(request) -> HttpResponse:
+def detalle_flan(request, flan_slug) -> HttpResponse:
     flan = get_object_or_404(Flan, slug=flan_slug)
     return render(request, 'detalle_flan.html', {'flan': flan})
