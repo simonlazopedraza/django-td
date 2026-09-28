@@ -5,7 +5,7 @@
     <form method="POST" class="col-md-6 mx-auto">
         {% csrf_token %}
         {{ formulario.as_p }}
-        <div class="text-center">
+        <div class="text-center mb-5">
             <button type="submit" class="btn btn-primary mt-3 px-5 rounded-pill">Enviar Mensaje</button>
         </div>
     </form>
