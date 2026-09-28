@@ -1,11 +1,76 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="row justify-content-center">
+
+</div>
+<div class="container my-4 my-lg-5">
+  <div class="row justify-content-center">
     <div class="col-md-8 text-center mb-4">
         <h1 class="display-5 fw-bold text-danger">Bienvenidos a OnlyFlans</h1>
 
     </div>
+  <!-- Hero Carousel Responsivo -->
+  <div id="heroCarousel" class="carousel slide hero-banner shadow-sm" data-bs-ride="carousel">
+    
+    <!-- Indicadores inferiores -->
+    <div class="carousel-indicators">
+      {% for producto in productos %}
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ forloop.counter0 }}" 
+                class="{% if forloop.first %}active{% endif %}" 
+                aria-current="{% if forloop.first %}true{% endif %}" 
+                aria-label="Slide {{ forloop.counter }}"></button>
+      {% endfor %}
+    </div>
+
+    <!-- Slides -->
+    <div class="carousel-inner p-4 p-md-5">
+      {% for producto in productos %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+          <div class="row align-items-center g-4">
+            
+            <!-- Columna Texto: En mobile va arriba, en desktop a la izquierda -->
+            <div class="col-12 col-md-6 text-center text-md-start">
+              <span class="badge bg-white text-dark mb-2 px-3 py-1 rounded-pill fw-semibold">
+                Destacado del Día
+              </span>
+              <h1 class="display-5 fw-extrabold text-white mb-3">
+                {{ producto.name }}
+              </h1>
+              <p class="lead text-white-50 mb-4">
+                {{ producto.description|truncatewords:18 }}
+              </p>
+              <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-md-start">
+                <a href="{% url 'detalle_flan' producto.slug %}" class="btn btn-hero-action rounded-pill px-4 py-2">
+                  Ver Ficha y Precio
+                </a>
+                <a href="{% url 'contact' %}" class="btn btn-outline-light rounded-pill px-4 py-2">
+                  Pedir por Encargo
+                </a>
+              </div>
+            </div>
+
+            <!-- Columna Imagen: En mobile va abajo, en desktop a la derecha -->
+            <div class="col-12 col-md-6">
+              <img src="{{ producto.image_url }}" class="carousel-flan-img" alt="{{ producto.name }}">
+            </div>
+
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Controles Siguiente / Anterior -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+
+  </div>
+
 </div>
 <div class="container mb-5">
     <h2 class="text-muted display-6 text-center border-top pt-2 pb-4">Postres disponibles</h2>    

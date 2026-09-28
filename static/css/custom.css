@@ -1,0 +1,114 @@
+:root {
+  --bg-crema: #F9F5EB;
+  --color-terracota: #D36A47;
+  --color-terracota-hover: #b85433;
+  --color-chocolate: #2D2320;
+  --color-amarillo-precio: #FCE69C;
+  --color-footer-dark: #2B2D42;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-crema);
+  color: var(--color-chocolate);
+}
+
+/* Enlaces y marca */
+.navbar .navbar-brand {
+  color: var(--color-terracota);
+  letter-spacing: -0.5px;
+}
+
+/* Botones con estilo Terracota */
+.btn-terracota {
+  background-color: var(--color-terracota);
+  color: #ffffff;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+.btn-terracota:hover {
+  background-color: var(--color-terracota-hover);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-outline-terracota {
+  border: 2px solid var(--color-terracota);
+  color: var(--color-terracota);
+  background: transparent;
+  font-weight: 600;
+}
+.btn-outline-terracota:hover {
+  background-color: var(--color-terracota);
+  color: #ffffff;
+}
+
+/* Pastilla de precio flotante estilo mockup */
+.badge-precio {
+  background-color: var(--color-amarillo-precio);
+  color: var(--color-chocolate);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Barra de navegación temática */
+.navbar-onlyflans {
+  background-color: var(--bg-crema);
+  border-bottom: 1px solid rgba(45, 35, 32, 0.08);
+}
+
+/* Enlaces del menú */
+.navbar-onlyflans .nav-link {
+  color: var(--color-chocolate);
+  font-weight: 600;
+  transition: color 0.2s ease-in-out;
+}
+
+.navbar-onlyflans .nav-link:hover {
+  color: var(--color-terracota);
+}
+
+/* Marca / Logo */
+.navbar-onlyflans .navbar-brand {
+  color: var(--color-terracota);
+  letter-spacing: -0.5px;
+  font-size: 1.75rem;
+}
+
+/* Hero Banner Terracota con respiración */
+.hero-banner {
+  background-color: #DE7250;
+  color: #ffffff;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+/* Imagen del carrusel adaptada para mobile y desktop */
+.carousel-flan-img {
+  height: 260px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 768px) {
+  .carousel-flan-img {
+    height: 360px;
+  }
+}
+
+/* Botón de llamada a la acción en el Hero */
+.btn-hero-action {
+  background-color: var(--color-chocolate);
+  color: #ffffff;
+  border: none;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-hero-action:hover {
+  background-color: #1a1412;
+  color: #ffffff;
+  transform: translateY(-2px);
+}

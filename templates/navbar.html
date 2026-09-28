@@ -1,37 +1,49 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4">
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-onlyflans py-3 sticky-top">
   <div class="container">
     <a class="navbar-brand fw-bold" href="/">OnlyFlans</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Abrir navegación">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+
+    <div class="collapse navbar-collapse mt-3 mt-lg-0" id="navbarMain">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-2 gap-lg-3">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+          <a class="nav-link px-2" href="{% url 'index' %}">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'welcome' %}">Bienvenida/o</a>
+          <a class="nav-link px-2" href="{% url 'welcome' %}">Bienvenida/o</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'about' %}">Acerca de</a>
+          <a class="nav-link px-2" href="{% url 'about' %}">Acerca de</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'contact' %}">Contacto</a>
+          <a class="nav-link px-2" href="{% url 'contact' %}">Contacto</a>
         </li>
+
         {% if user.is_authenticated %}
-          <li class="nav-item d-flex align-items-center me-3">
-            <span class="navbar-text text-light fw-bold">Hola, {{ user.username }}</span>
+          <li class="nav-item d-flex align-items-center my-2 my-lg-0 me-lg-2">
+            <span class="badge bg-white text-dark shadow-sm px-3 py-2 rounded-pill border fw-semibold">
+              👋 Hola, {{ user.username }}
+            </span>
           </li>
           <li class="nav-item">
             <form method="POST" action="{% url 'logout' %}" class="d-inline">
               {% csrf_token %}
-              <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-3">Cerrar Sesión</button>
+              <button type="submit" class="btn btn-outline-danger btn-sm rounded-pill px-3 py-1 fw-semibold w-100 w-lg-auto">
+                Cerrar Sesión
+              </button>
             </form>
           </li>
         {% else %}
-          <li class="nav-item">
-            <a class="nav-link btn btn-outline-light btn-sm rounded-pill px-3" href="{% url 'login' %}">Iniciar Sesión</a>
-            <a class="btn btn-primary" href="{% url 'registro' %}">Registrarse</a>
+          <li class="nav-item d-flex flex-column flex-lg-row gap-2 mt-2 mt-lg-0">
+            <a class="btn btn-outline-terracota btn-sm rounded-pill px-3 py-1" href="{% url 'login' %}">
+              Iniciar Sesión
+            </a>
+            <a class="btn btn-terracota btn-sm rounded-pill px-3 py-1" href="{% url 'registro' %}">
+              Registrarse
+            </a>
           </li>
         {% endif %}
       </ul>
