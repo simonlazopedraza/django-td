@@ -1,4 +1,5 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
@@ -15,7 +16,6 @@ def about(request) -> HttpResponse:
     context = {}
     return render(request, 'about.html')
 
-@login_required
 def welcome(request) -> HttpResponse:
     flanes_privados = Flan.objects.filter(is_private=True)
     context = {
@@ -37,3 +37,14 @@ def contact(request) -> HttpResponse:
 
 def success(request) -> HttpResponse:
     return render(request, 'success.html')
+
+def registro(request) -> HttpResponse:
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            usuario = form.save()
+            login(request, usuario)
+            return redirect('welcome')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/registration.html', {'form': form})
