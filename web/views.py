@@ -1,9 +1,10 @@
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import *
 from .forms import ContactFormForm
+
 
 def index(request) -> HttpResponse:
     flanes = Flan.objects.filter(is_private=False)
@@ -48,3 +49,7 @@ def registro(request) -> HttpResponse:
     else:
         form = UserCreationForm()
     return render(request, 'registration/registration.html', {'form': form})
+
+def detalle_flan(request) -> HttpResponse:
+    flan = get_object_or_404(Flan, slug=flan_slug)
+    return render(request, 'detalle_flan.html', {'flan': flan})

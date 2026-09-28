@@ -25,6 +25,6 @@ urlpatterns = [
     path('bienvenido/', views.welcome, name='welcome'),
     path('contacto/', views.contact, name='contact'),
     path('exito/', views.success, name='success'),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('registro/', views.registro, name='registro')
+    path('accounts/', include('django.contrib.auth.urls')), 
+    path('flan/<flan_slug>/', views.detalle_flan, name='detalle_flan')
 ]
