@@ -13,9 +13,6 @@
           <a class="nav-link px-2" href="{% url 'index' %}">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link px-2" href="{% url 'welcome' %}">Bienvenida/o</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link px-2" href="{% url 'about' %}">Acerca de</a>
         </li>
         <li class="nav-item">
@@ -23,9 +20,12 @@
         </li>
 
         {% if user.is_authenticated %}
+          <li class="nav-item">
+          <a class="nav-link px-2" href="{% url 'welcome' %}">Postres VIP</a>
+          </li>
           <li class="nav-item d-flex align-items-center my-2 my-lg-0 me-lg-2">
             <span class="badge bg-white text-dark shadow-sm px-3 py-2 rounded-pill border fw-semibold">
-              👋 Hola, {{ user.username }}
+              Hola, {{ user.username }}
             </span>
           </li>
           <li class="nav-item">
